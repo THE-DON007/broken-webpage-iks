@@ -1,76 +1,187 @@
+/* =========================
+GLOBAL SETTINGS
+========================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  }
+
+html {
+scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  color: #222;
+font-family: Arial, sans-serif;
+color: #222;
+line-height: 1.6;
+background: #ffffff;
 }
 
+/* =========================
+HEADER & NAVIGATION
+========================= */
+
 .site-header {
-  background-color: #1a1a2e;
-  padding: 20px;
-  color: white;
-  position: relative;
+background-color: #1a1a2e;
+padding: 20px;
+color: white;
+
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+gap: 20px;
+flex-wrap: wrap;
+
+
 }
 
 .site-header h1 {
-  font-size: 28px;
+font-size: clamp(1.5rem, 4vw, 1.75rem);
 }
 
-/* BUG 1: absolutely positioned with fixed pixel offsets.
-   Overlaps the heading on smaller screens instead of sitting neatly beside it. */
+/* Responsive navigation */
+
 .nav {
-  position: absolute;
-  top: 15px;
-  left: 400px;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+gap: 15px;
 }
 
 .nav a {
-  color: white;
-  text-decoration: none;
-  margin-right: 15px;
+color: white;
+text-decoration: none;
+padding: 5px;
 }
 
-/* BUG 2: fixed pixel width wider than a phone screen, no max-width: 100%.
-   Forces horizontal scrolling on mobile. */
-.banner {
-  width: 1200px;
-  height: 300px;
-  object-fit: cover;
-  display: block;
+.nav a:hover {
+text-decoration: underline;
 }
+
+/* =========================
+MAIN CONTENT
+========================= */
+
+main {
+width: 100%;
+}
+
+/* =========================
+RESPONSIVE BANNER
+========================= */
+
+.banner {
+width: 100%;
+max-width: 1200px;
+height: auto;
+
+
+display: block;
+margin: 0 auto;
+
+object-fit: cover;
+
+
+}
+
+/* =========================
+CARD GRID
+========================= */
 
 .card-grid {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .card {
-  background-color: #f4f4f4;
-  padding: 15px;
-  flex: 1;
+background-color: #f4f4f4;
+
+
+padding: 15px;
+
+flex: 1 1 250px;
+
+border-radius: 8px;
+
 }
 
-/* BUG 3: fixed, oversized font size that never scales down.
-   Becomes unreadable / overwhelming on small screens. */
+/* Responsive card heading */
+
 .card h3 {
-  font-size: 32px;
-  margin-bottom: 8px;
+font-size: clamp(1.25rem, 3vw, 2rem);
+margin-bottom: 8px;
 }
 
 .card p {
-  font-size: 16px;
-  line-height: 1.4;
+font-size: 1rem;
+line-height: 1.5;
 }
 
+/* =========================
+FOOTER
+========================= */
+
 .site-footer {
-  background-color: #111;
-  color: #aaa;
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
+    background-color: #111;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.875rem;
+}
+
+.site-footer p {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* =========================
+MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 600px) {
+
+
+.site-header {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+    .nav {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav a {
+        padding: 0.5rem;
+    }
+}
+
+.card-grid {
+    padding: 15px;
+}
+
+.card {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    flex: 1 1 250px;
+    border-radius: 8px;
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
 }
