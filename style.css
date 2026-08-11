@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+.site-header {
+  background-color: #1a1a2e;
+  padding: 20px;
+  color: white;
+  position: relative;
+}
+
+.site-header h1 {
+  font-size: 28px;
+}
+
+/* BUG 1: absolutely positioned with fixed pixel offsets.
+   Overlaps the heading on smaller screens instead of sitting neatly beside it. */
+.nav {
+  position: absolute;
+  top: 15px;
+  left: 400px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+/* BUG 2: fixed pixel width wider than a phone screen, no max-width: 100%.
+   Forces horizontal scrolling on mobile. */
+.banner {
+  width: 1200px;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-grid {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #f4f4f4;
+  padding: 15px;
+  flex: 1;
+}
+
+/* BUG 3: fixed, oversized font size that never scales down.
+   Becomes unreadable / overwhelming on small screens. */
+.card h3 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.site-footer {
+  background-color: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+}
